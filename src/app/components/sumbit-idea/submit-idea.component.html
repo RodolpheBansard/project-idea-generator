@@ -1,5 +1,16 @@
 <div class="form-container" [formGroup]="newIdeaForm">
-  <input formControlName="title">
-  <textarea formControlName="description"></textarea>
-  <button (click)="postIdea()" [disabled]="newIdeaForm.invalid">submit</button>
+  <div class="field-container">
+    <label>Title</label>
+    <input formControlName="title">
+  </div>
+
+  <div class="field-container">
+    <label>Description</label>
+    <textarea formControlName="description"></textarea>
+  </div>
+
 </div>
+<div class="button-container">
+  <button class="submit-button" (click)="postIdea()" [disabled]="newIdeaForm.invalid">Submit Idea</button>
+</div>
+

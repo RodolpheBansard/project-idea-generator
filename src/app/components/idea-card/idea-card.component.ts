@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Idea} from "../../model/idea";
 import {IdeaService} from "../../service/idea.service";
+import {CookieService} from "../../service/cookie.service";
 
 @Component({
   selector: 'app-idea-card',
@@ -18,7 +19,8 @@ export class IdeaCardComponent implements OnInit {
   @Output()
   reloadIdeaEmitter : EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private ideaService: IdeaService) { }
+  constructor(private ideaService: IdeaService,
+              private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
@@ -29,5 +31,12 @@ export class IdeaCardComponent implements OnInit {
 
   addLike(idea :Idea){
     this.ideaService.addLike(idea);
+  }
+  removeLike(idea :Idea){
+    this.ideaService.removeLike(idea);
+  }
+
+  alreadyLiked(idea : Idea){
+    return this.cookieService.isCookieAlreadyExist(idea.id)
   }
 }

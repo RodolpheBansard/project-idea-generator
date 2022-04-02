@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Idea} from "../model/idea";
-import {BehaviorSubject, Observable, Subject, Subscription} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {map} from "rxjs/operators";
+import {CookieService} from "./cookie.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,8 @@ export class IdeaService {
   ideas: Idea[] = [];
   loading$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore,
+              private cookieService:CookieService) {
     this.ideas$ = firestore.collection<Idea>('Idea').valueChanges({idField:'id'})
     this.ideas$.subscribe((data)=> {
       this.ideas = data;
@@ -37,8 +38,26 @@ export class IdeaService {
 
 
   addLike(idea :Idea):void{
-    this.firestore.collection<Idea>('Idea').doc(idea.id).update({likeNumber:idea.likeNumber+1})
+    if(!this.cookieService.isCookieAlreadyExist(idea.id)){
+      this.firestore.collection<Idea>('Idea').doc(idea.id).update({likeNumber:idea.likeNumber+1}).then(
+        () => {
+          this.cookieService.setCookie(idea.id,idea.id,1);
+        }
+      )
+    }
   }
+
+  removeLike(idea :Idea):void{
+    this.firestore.collection<Idea>('Idea').doc(idea.id).update({likeNumber:idea.likeNumber-1}).then(
+      () => {
+        console.log('remove')
+        this.cookieService.removeCookie(idea.id,idea.id);
+      }
+    )
+
+  }
+
+
 
 
 }

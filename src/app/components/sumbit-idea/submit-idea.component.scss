@@ -1,3 +1,5 @@
+@import '~src/styles.scss';
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -5,4 +7,44 @@
   width: 90%;
   max-width: 600px;
   margin: 0 auto;
+
+  .field-container{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+input,textarea{
+  border: none;
+  border-bottom: 2px solid $grey;
+  padding: 0.5rem 0;
+  outline: none;
+  background: none;
+  color: $white
+}
+label{
+  font-size: 1.5rem;
+}
+
+textarea{
+  font-size: 1.25rem;
+  height: 5rem;
+
+  resize: none;
+
+}
+.button-container{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit-button{
+
+  padding: 1rem 2rem 1rem 2rem;
+  background: $background-card;
+  color: $white;
+  border: none;
+  border-radius: 2.5rem;
+  font-size: 1.75rem;
 }
