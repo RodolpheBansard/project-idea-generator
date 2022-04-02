@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-idea-list',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdeaListComponent implements OnInit {
 
-  constructor() { }
+  ideas: Observable<any[]>;
+  constructor(firestore: AngularFirestore) {
+    this.ideas = firestore.collection('Idea').valueChanges();
+  }
 
   ngOnInit(): void {
   }
+
+
 
 }

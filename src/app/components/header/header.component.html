@@ -1,1 +1,18 @@
-<p>header works!</p>
+<div class="header">
+  <img src="assets/images/light-bulb.svg">
+  <div class="header-menus">
+    <span (click)="navigateToRandomIdea()">Random Idea</span>
+    <span (click)="navigateToSubmitIdea()">Submit Idea</span>
+  </div>
+  <div [ngClass]="{'active': isBurgerOpened}" (click)="toggleBurgerMenu()" class="burger-menu">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div [ngClass]="{'active': isBurgerOpened}" class="burger-overlay">
+  <img (click)="toggleBurgerMenu()" src="assets/images/cross.svg">
+  <span (click)="navigateToRandomIdea(); toggleBurgerMenu()">Random Idea</span>
+  <span (click)="navigateToSubmitIdea(); toggleBurgerMenu()">Submit Idea</span>
+</div>
