@@ -1,0 +1,14 @@
+<div *ngIf="idea" class="idea-card">
+  <div class="card-content">
+    <div class="reload-container">
+      <h1>{{idea.title}}</h1>
+      <img *ngIf="isReloadAble" (click)="reloadIdea()" src="assets/images/reload.svg">
+    </div>
+
+    <p>{{idea.description}}</p>
+  </div>
+  <div class="like-container">
+    <img (click)="addLike(idea)" src="assets/images/heart-empty.svg">
+    <span>{{idea.likeNumber}}</span>
+  </div>
+</div>

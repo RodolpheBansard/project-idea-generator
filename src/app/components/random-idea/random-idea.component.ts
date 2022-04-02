@@ -1,15 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {Observable} from "rxjs";
+import {Idea} from "../../model/idea";
+import {IdeaService} from "../../service/idea.service";
 
 @Component({
   selector: 'app-random-idea',
   templateUrl: './random-idea.component.html',
   styleUrls: ['./random-idea.component.scss']
 })
-export class RandomIdeaComponent implements OnInit {
+export class RandomIdeaComponent {
 
-  constructor() { }
+  randomIdea$! : Observable<Idea>;
 
-  ngOnInit(): void {
+  constructor(private ideaService: IdeaService) {
+    this.reloadIdea();
   }
+
+  reloadIdea(){
+
+    this.ideaService.loading$.subscribe(isLoaded => {
+      if(isLoaded){
+        let randomId = this.ideaService.getRandomId();
+        if(randomId){
+          this.randomIdea$ = this.ideaService.getIdea(randomId);
+        }
+      }
+    })
+
+
+
+  }
+
+
 
 }

@@ -19,9 +19,11 @@
     font-size: 1.5rem;
     @media screen and (min-width: 600px) {
       display: flex;
-
     }
 
+    span{
+      cursor: pointer;
+    }
 
 
   }

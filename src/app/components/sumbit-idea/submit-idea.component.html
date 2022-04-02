@@ -1,1 +1,5 @@
-<p>sumbit-idea works!</p>
+<div class="form-container" [formGroup]="newIdeaForm">
+  <input formControlName="title">
+  <textarea formControlName="description"></textarea>
+  <button (click)="postIdea()" [disabled]="newIdeaForm.invalid">submit</button>
+</div>

@@ -13,6 +13,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { IdeaListComponent } from './components/idea-list/idea-list.component';
 import { RandomIdeaComponent } from './components/random-idea/random-idea.component';
 import { SubmitIdeaComponent } from './components/sumbit-idea/submit-idea.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {AngularFireFunctionsModule} from "@angular/fire/compat/functions";
+import { IdeaCardComponent } from './components/idea-card/idea-card.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,16 @@ import { SubmitIdeaComponent } from './components/sumbit-idea/submit-idea.compon
     HeaderComponent,
     IdeaListComponent,
     RandomIdeaComponent,
-    SubmitIdeaComponent
+    SubmitIdeaComponent,
+    IdeaCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireFunctionsModule,
     AngularFireDatabaseModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

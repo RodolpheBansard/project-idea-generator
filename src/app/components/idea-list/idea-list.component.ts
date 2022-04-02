@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Idea} from "../../model/idea";
+import {IdeaService} from "../../service/idea.service";
 
 
 @Component({
@@ -10,13 +11,14 @@ import { Observable } from 'rxjs';
 })
 export class IdeaListComponent implements OnInit {
 
-  ideas: Observable<any[]>;
-  constructor(firestore: AngularFirestore) {
-    this.ideas = firestore.collection('Idea').valueChanges();
+  ideas: Observable<Idea[]>;
+  constructor(private ideaService: IdeaService) {
+    this.ideas = this.ideaService.ideas$;
   }
 
   ngOnInit(): void {
   }
+
 
 
 
