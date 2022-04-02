@@ -16,6 +16,7 @@ import { SubmitIdeaComponent } from './components/sumbit-idea/submit-idea.compon
 import {ReactiveFormsModule} from "@angular/forms";
 import {AngularFireFunctionsModule} from "@angular/fire/compat/functions";
 import { IdeaCardComponent } from './components/idea-card/idea-card.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { IdeaCardComponent } from './components/idea-card/idea-card.component';
     AngularFireFunctionsModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
