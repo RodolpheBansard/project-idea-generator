@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "project-idea-generator:build:production",
+            "firebaseProject": "project-idea-generator-9aa04",
+            "firebaseHostingSite": "project-idea-generator-9aa04"
+          }
         }
       }
     }

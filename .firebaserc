@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "project-idea-generator-9aa04": {
+      "hosting": {
+        "project-idea-generator": [
+          "project-idea-generator-9aa04"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "project-idea-generator-9aa04"
+  }
+}
