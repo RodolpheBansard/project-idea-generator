@@ -19,6 +19,9 @@ export class HeaderComponent implements OnInit {
     this.isBurgerOpened = !this.isBurgerOpened;
   }
 
+  navigateToIdeasList(){
+    this.router.navigateByUrl('idea-list');
+  }
   navigateToRandomIdea(){
     this.router.navigateByUrl('random-idea');
   }
