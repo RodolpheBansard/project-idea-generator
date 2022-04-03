@@ -9,6 +9,18 @@
     <textarea formControlName="description"></textarea>
   </div>
 
+  <div class="field-container">
+    <label>Tags</label>
+    <input (keyup.enter)="addTag()" (keyup.space)="addTag()" formControlName="tag">
+    <div class="tag-container">
+      <div class="tag" *ngFor="let tag of tags;let index = index">
+        <span>{{tag}}</span>
+        <img (click)="deleteTag(index)" class="cross-icon" src="assets/images/cross.svg">
+      </div>
+    </div>
+  </div>
+
+
 </div>
 <div class="button-container">
   <button class="submit-button" (click)="postIdea()" [disabled]="newIdeaForm.invalid">Submit Idea</button>

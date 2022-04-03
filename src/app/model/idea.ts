@@ -4,4 +4,5 @@ export interface Idea {
   description: string;
   likeNumber: number;
   creationDate: string;
+  tags?: string[]
 }
