@@ -1,3 +1,9 @@
+<div class="filter-container">
+  <span [ngClass]="{'active':currentFilter==='popular'}" (click)="filterIdea('popular')">Popular</span>
+  <span [ngClass]="{'active':currentFilter==='new'}" (click)="filterIdea('new')">New</span>
+  <span [ngClass]="{'active':currentFilter==='old'}" (click)="filterIdea('old')">Old</span>
+</div>
+
 <div class="ideas-container">
   <app-idea-card [idea]="idea" *ngFor="let idea of ideas | async"></app-idea-card>
 </div>

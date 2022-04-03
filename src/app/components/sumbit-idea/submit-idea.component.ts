@@ -38,14 +38,14 @@ export class SubmitIdeaComponent implements OnInit {
     }
     this.ideaCollection.add(idea);
     this.newIdeaForm.reset();
+    this.tags = [];
   }
-
 
   addTag(){
     this.tags.push(this.newIdeaForm.value.tag);
     this.newIdeaForm.patchValue({tag:''});
-    this.tags = [];
   }
+
   deleteTag(index:number){
     this.tags.splice(index,1)
   }

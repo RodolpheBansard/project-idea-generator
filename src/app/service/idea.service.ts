@@ -17,11 +17,13 @@ export class IdeaService {
               private cookieService:CookieService) {
     this.ideas$ = firestore.collection<Idea>('Idea').valueChanges({idField:'id'})
     this.ideas$.subscribe((data)=> {
+      console.log(data);
+      data.sort((a,b) => (a.likeNumber > b.likeNumber ? -1 : 1));
+      console.log(data);
       this.ideas = data;
       if(!this.loading$.getValue()){
         this.loading$.next(true);
       }
-
     })
   }
 
@@ -50,10 +52,25 @@ export class IdeaService {
   removeLike(idea :Idea):void{
     this.firestore.collection<Idea>('Idea').doc(idea.id).update({likeNumber:idea.likeNumber-1}).then(
       () => {
-        console.log('remove')
         this.cookieService.removeCookie(idea.id,idea.id);
       }
     )
+
+  }
+
+  setFilter(value:string){
+    if(value==='popular'){
+      this.ideas$.subscribe((data)=> {
+
+
+        data.sort((a,b) => a.likeNumber - b.likeNumber);
+
+        this.ideas = data;
+        if(!this.loading$.getValue()){
+          this.loading$.next(true);
+        }
+      })
+    }
 
   }
 
