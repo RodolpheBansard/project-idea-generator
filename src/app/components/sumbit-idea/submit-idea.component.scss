@@ -20,14 +20,15 @@ input,textarea{
   padding: 0.5rem 0;
   outline: none;
   background: none;
-  color: $white
+  color: $white;
+  font-size: 1.25rem;
 }
 label{
   font-size: 1.5rem;
 }
 
 textarea{
-  font-size: 1.25rem;
+
   height: 5rem;
 
   resize: none;
@@ -40,11 +41,19 @@ textarea{
   align-items: center;
 }
 .submit-button{
-
+  cursor: pointer;
   padding: 1rem 2rem 1rem 2rem;
   background: $background-card;
   color: $white;
   border: none;
   border-radius: 2.5rem;
   font-size: 1.75rem;
+}
+
+.submit-button:hover{
+  background: #5d8fa8;
+}
+
+.submit-button:active{
+  background: #297ea8;
 }
