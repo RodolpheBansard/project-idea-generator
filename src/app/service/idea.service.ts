@@ -17,9 +17,7 @@ export class IdeaService {
               private cookieService:CookieService) {
     this.ideas$ = firestore.collection<Idea>('Idea').valueChanges({idField:'id'})
     this.ideas$.subscribe((data)=> {
-      console.log(data);
       data.sort((a,b) => (a.likeNumber > b.likeNumber ? -1 : 1));
-      console.log(data);
       this.ideas = data;
       if(!this.loading$.getValue()){
         this.loading$.next(true);
